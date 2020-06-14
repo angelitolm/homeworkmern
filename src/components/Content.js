@@ -13,6 +13,7 @@ import { connect } from "react-redux"
 
 // Personalized Components
 import EmployeeList from './employees/employeeList'
+import FilterEmployee from './filter/filterForm'
 
 const Content = (props) => {
 
@@ -20,9 +21,13 @@ const Content = (props) => {
     <Fragment>
     	{/* begin::Dashboard */}
       {/* begin::Row */}
-      <div className="row mt-0 mt-lg-8">
-        <div className="col-md-12">
+      <div className="row mt-0 mt-lg-8 card-shadow">
+        <div className="col-md-9">
           <EmployeeList props={props} />
+        </div>
+
+        <div className="col-md-3">
+          <FilterEmployee props={props} />
         </div>
       </div>
       {/* end::Row */}
@@ -32,11 +37,16 @@ const Content = (props) => {
 }
 
 const mapStateToProps = (state, props) => {
-  const search = state.search
 
-  const {employees, setVisibleEmployees} = props
+  const { columns, setColumns, fields, setFields, selectColumns, setSelectColumns, fieldsByColumns, setfieldsByColumns, filteredEmployee,
+    currentPage, setCurrentPage, employeePerPage, setTotalEmployeePerPage, employees, setEmployees, onChangeSearch, selectedOption, setSelectedOption,
 
-  return { employees, setVisibleEmployees }
+   } = props
+
+  return { columns, setColumns, fields, setFields, selectColumns, setSelectColumns, fieldsByColumns, setfieldsByColumns, filteredEmployee,
+    currentPage, setCurrentPage, employeePerPage, setTotalEmployeePerPage, employees, setEmployees, onChangeSearch, selectedOption, setSelectedOption,
+    
+   }
 }
 
 export default connect(
